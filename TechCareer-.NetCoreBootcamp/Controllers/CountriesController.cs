@@ -28,6 +28,7 @@ namespace TechCareer_.NetCoreBootcamp.Controllers
                 "Polonya",
                 "Romanya"
             };
+
         [HttpGet]
         public string[] Get()
         {           
@@ -36,10 +37,17 @@ namespace TechCareer_.NetCoreBootcamp.Controllers
 
 
         [HttpGet("{totalCountries}")]
-        public string[] Get(int totalCountries)
+        public ActionResult<string[]> Get(int totalCountries)
         {
-            var selectedCountries = countries.Take(totalCountries).ToArray();
-            return selectedCountries;
+            if(totalCountries < 0 ||  totalCountries > countries.Length) 
+            {
+                return BadRequest("Invalid input");
+            }
+            else
+            {
+                var selectedCountries = countries.Take(totalCountries).ToArray();
+                return selectedCountries;
+            }          
         }
 
     }
