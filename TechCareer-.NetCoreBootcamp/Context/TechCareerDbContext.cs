@@ -10,5 +10,7 @@ namespace TechCareer_.NetCoreBootcamp.Context
             optionsBuilder.UseSqlServer("Server=.;Database=TechCareerDb;Trusted_Connection=True; TrustServerCertificate=True");
         }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<WebUser> WebUsers { get; set; }
     }
 }
